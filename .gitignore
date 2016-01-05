@@ -1,0 +1,9 @@
+libs/classes.jar
+.classpath
+.project
+proguard-project.txt
+.settings/
+bin/
+gen/
+project.properties
+libs/
