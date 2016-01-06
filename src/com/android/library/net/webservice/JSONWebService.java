@@ -6,21 +6,21 @@
  * @author: 23536   
  * @date: 2015年12月23日 下午4:07:00 
  */
-package com.android.library.net.base;
+package com.android.library.net.webservice;
 
+import com.android.library.net.base.AbstractWebServiceRequest;
+import com.android.library.net.base.DataStruct;
 import com.android.library.net.req.DataReq;
 import com.android.library.net.utils.JSONType;
 import com.android.library.net.utils.JSONUtil;
-import com.android.library.net.webservice.JSONWebServiceRequest;
-import com.android.library.net.webservice.WebServiceRequest;
 
 
 /** 
- * @description: TODO
+ * @description:
  * @author: 23536
  * @date: 2015年12月23日 下午4:07:00  
  */
-public class JSONDataSource<T extends DataStruct, K extends DataReq> extends AbstractDataRequest<T, WebServiceRequest<K>> {
+public class JSONWebService<T extends DataStruct, K extends DataReq> extends AbstractWebServiceRequest<T, WebServiceRequest<K>> {
 
     private JSONType<T> mDataType;
     private K mReqBean;

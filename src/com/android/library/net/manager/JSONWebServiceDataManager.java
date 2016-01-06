@@ -10,22 +10,22 @@ package com.android.library.net.manager;
 
 import com.android.library.net.base.AbstractData;
 import com.android.library.net.base.IDataCallback;
-import com.android.library.net.base.JSONDataSource;
 import com.android.library.net.req.DataReq;
 import com.android.library.net.utils.JSONType;
+import com.android.library.net.webservice.JSONWebService;
 
 /** 
  * @description: 基于JSON的数据请求
  * @author: 23536
  * @date: 2015年12月23日 下午3:23:30  
  */
-public abstract class JSONDataManager<T extends AbstractData, K extends DataReq> extends AbstractDataManager<T> {
+public abstract class JSONWebServiceDataManager<T extends AbstractData, K extends DataReq> extends AbstractDataManager<T> {
 
     protected DataManagerListener listener = new DataManagerListener();
     
     private JSONType<T> respType;
     
-    public JSONDataManager(IDataCallback callback) {
+    public JSONWebServiceDataManager(IDataCallback callback) {
         super(callback);
         respType = initRespType();
     }
@@ -49,7 +49,7 @@ public abstract class JSONDataManager<T extends AbstractData, K extends DataReq>
         if(respType == null){
             throw new RuntimeException("method initRespType() must be overide");
         }
-        JSONDataSource<T, K> source = new JSONDataSource<T, K>();
+        JSONWebService<T, K> source = new JSONWebService<T, K>();
         source.setReqAndResp(api, req, respType);
         source.setListener(listener);
         source.doRequest();
@@ -63,7 +63,7 @@ public abstract class JSONDataManager<T extends AbstractData, K extends DataReq>
      * @return
      */
     protected int doRequest(String api, K req, JSONType type) {
-        JSONDataSource<T, K> source = new JSONDataSource<T, K>();
+        JSONWebService<T, K> source = new JSONWebService<T, K>();
         source.setReqAndResp(api, req, type);
         source.setListener(listener);
         source.doRequest();

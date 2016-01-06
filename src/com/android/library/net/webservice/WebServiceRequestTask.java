@@ -18,14 +18,14 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.util.Log;
 
 import com.android.library.net.base.OnReslutListener;
-import com.android.library.net.req.BaseReqest;
+import com.android.library.net.req.WebServiceReqest;
 
 /** 
  * @description: 执行webservice请求任务
  * @author: 23536
  * @date: 2015年12月23日 下午3:35:28  
  */
-public class WebServiceRequestTask<T extends BaseReqest> implements Runnable {
+public class WebServiceRequestTask<T extends WebServiceReqest> implements Runnable {
 
     private final static int COUNT_TIMES = 1;
     private OnReslutListener listener = null;

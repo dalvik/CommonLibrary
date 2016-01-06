@@ -7,7 +7,7 @@
  */
 package com.android.library.net.webservice;
 
-import com.android.library.net.req.BaseReqest;
+import com.android.library.net.req.WebServiceReqest;
 import com.android.library.net.req.DataReq;
 
 /** 
@@ -15,7 +15,7 @@ import com.android.library.net.req.DataReq;
  * @author: 23536
  * @date: 2016年1月5日 下午3:10:26  
  */
-public abstract class WebServiceRequest<T extends DataReq> implements BaseReqest {
+public abstract class WebServiceRequest<T extends DataReq> implements WebServiceReqest {
 
     @Override
     public String getUrl() {

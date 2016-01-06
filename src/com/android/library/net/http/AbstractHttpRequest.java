@@ -1,26 +1,14 @@
-/**   
- * Copyright © 2015 浙江大华. All rights reserved.
- * 
- * @title: AbstractDataSource.java
- * @description: 数据请求和回调接口
- * @author: 23536   
- * @date: 2015年12月23日 下午3:55:16 
- */
-package com.android.library.net.base;
+package com.android.library.net.http;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.android.library.net.req.BaseReqest;
-import com.android.library.net.webservice.WebServiceRequestTask;
+import com.android.library.net.base.AbstractDataRequestListener;
+import com.android.library.net.base.DataStruct;
+import com.android.library.net.base.OnReslutListener;
+import com.android.library.net.base.RequestThreadPool;
 
-/**
- * @description: 数据请求和回调接口，负责数据的请求和返回结果的回调
- * @author: 23536
- * @date: 2015年12月23日 下午3:55:16
- */
-public abstract class AbstractDataRequest<T extends DataStruct, V extends BaseReqest> implements OnReslutListener {
+public abstract class AbstractHttpRequest<T extends DataStruct, V extends HttpRequest> implements OnReslutListener {
 
-    
     private static RequestThreadPool mMessageManager;
 
     private static AtomicInteger atomic;
@@ -32,7 +20,6 @@ public abstract class AbstractDataRequest<T extends DataStruct, V extends BaseRe
     }
 
     private int what = atomic.getAndIncrement();
-    
     private AbstractDataRequestListener<T> listener = null;
 
     /**
@@ -43,14 +30,14 @@ public abstract class AbstractDataRequest<T extends DataStruct, V extends BaseRe
     /**
      * 转化Resp
      */
-    protected abstract T parseResp(String obj);
+    protected abstract T parseResp(String content);
 
     public int getWhat() {
         return what;
     }
 
     @Override
-    public void onSucess(String result) {
+    public final void onSucess(String result) {
         try {
             T t = parseResp(result);
             if (null != listener) {
@@ -65,9 +52,9 @@ public abstract class AbstractDataRequest<T extends DataStruct, V extends BaseRe
             onFailed();
         }
     }
-    
+
     @Override
-    public void onFailed() {
+    public final void onFailed() {
         if (null != listener) {
             listener.sendMessage(what, AbstractDataRequestListener.RESULT_ERROR, null);
         }
@@ -80,7 +67,7 @@ public abstract class AbstractDataRequest<T extends DataStruct, V extends BaseRe
     public final void doRequest() {
         mMessageManager = RequestThreadPool.instance;
         V req = getRequest();
-        WebServiceRequestTask<V> task = new WebServiceRequestTask<V>(this, req);
+        HttpRequestTask<V> task = new HttpRequestTask<V>(this, req);
         mMessageManager.execute(task);
     }
 }

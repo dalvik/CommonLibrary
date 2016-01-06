@@ -15,7 +15,7 @@ import org.ksoap2.serialization.SoapObject;
  * @author: 23536
  * @date: 2015年12月23日 下午3:28:45  
  */
-public interface BaseReqest {
+public interface WebServiceReqest {
 
     /**
      *  
