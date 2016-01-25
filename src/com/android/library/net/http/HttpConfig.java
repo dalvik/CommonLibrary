@@ -9,7 +9,7 @@ public class HttpConfig {
     
     public final static String API_VER = "1";
     
-    public final static String SERVER = "www.baidu.com";
+    public final static String SERVER = "http://10.33.9.54/Test/index.php";
     
     private HttpConfig(){
     }

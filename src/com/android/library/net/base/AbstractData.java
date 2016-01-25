@@ -18,4 +18,5 @@ import com.android.library.net.resp.DataResp;
 public class AbstractData<T extends DataResp> extends DataStruct {
     public T data;
     public T result;
+    public T param;
 }

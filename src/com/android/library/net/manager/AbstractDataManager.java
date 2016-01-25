@@ -29,7 +29,7 @@ public abstract class AbstractDataManager<T extends AbstractData> extends Handle
      */
     public static final int RESULT_SUCCESS = AbstractDataRequestListener.RESULT_SUCCESS;
     /**
-     * 成功
+     * 失败
      */
     public static final int RESULT_FAILED = AbstractDataRequestListener.RESULT_FAILED;
     /**
@@ -37,7 +37,12 @@ public abstract class AbstractDataManager<T extends AbstractData> extends Handle
      */
     public static final int RESULT_ERROR = AbstractDataRequestListener.RESULT_ERROR;
     
-
+    /**
+     * 失败 网络问题
+     */
+    public static final int RESULT_SID_TIMEOUT = AbstractDataRequestListener.RESULT_ERROR;
+    
+    
     private SoftReference<IDataCallback> mCallback = null;
 
     public AbstractDataManager() {

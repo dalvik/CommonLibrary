@@ -13,7 +13,6 @@ import java.util.HashMap;
 import com.android.library.BaseApplication;
 import com.android.library.net.req.DataReq;
 import com.android.library.net.utils.LogUtil;
-import com.android.library.utils.ClientInfo;
 import com.android.library.utils.SecurityUtils;
 
 /** 

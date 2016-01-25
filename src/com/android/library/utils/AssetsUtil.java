@@ -1,10 +1,10 @@
 package com.android.library.utils;
 
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-
 import java.io.IOException;
 import java.io.InputStream;
+
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 
 public class AssetsUtil {
     /**

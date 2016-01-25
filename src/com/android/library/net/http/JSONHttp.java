@@ -40,7 +40,7 @@ public class JSONHttp<T extends DataStruct, K extends DataReq> extends AbstractH
                 return mMethod;
             }
         };
-        return null;
+        return req;
     }
     
     /**

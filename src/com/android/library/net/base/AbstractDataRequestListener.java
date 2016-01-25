@@ -23,9 +23,14 @@ public interface AbstractDataRequestListener<T> {
      */
     public static final int RESULT_FAILED = 5001;
     /**
-     * 错误
+     * 内部错误
      */
     public static final int RESULT_ERROR = 0;
+    
+    /**
+     * 网络错误
+     */
+    public static final int RESULT_NET_ERROR = -1;
     
     /**
      * 

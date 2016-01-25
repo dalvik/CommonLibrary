@@ -8,10 +8,10 @@ package com.android.library.utils;
  * ***********************************************
  */
 
-import android.text.TextUtils;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import android.text.TextUtils;
 
 public class MD5 {
 

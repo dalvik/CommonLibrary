@@ -1,11 +1,11 @@
 package com.android.library.utils;
 
-import android.text.format.DateUtils;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import android.text.format.DateUtils;
 
 public class DateUtil extends DateUtils {
 

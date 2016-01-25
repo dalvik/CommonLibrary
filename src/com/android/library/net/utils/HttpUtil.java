@@ -77,11 +77,12 @@ public final class HttpUtil {
             conn.addRequestProperty("Accept-Encoding", "compress");
             conn.addRequestProperty("charset", "utf-8");
             conn.setRequestProperty("Content-type", "application/json");
+            conn.setRequestProperty("Connection", "Keep-Alive");
             if (Build.VERSION.SDK_INT > 13) {
                 conn.setRequestProperty("Connection", "close");
             }
 
-            conn.setChunkedStreamingMode(0);
+            //conn.setChunkedStreamingMode(0);
 
             if (headers != null) {
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
@@ -111,9 +112,6 @@ public final class HttpUtil {
                 }
             }else{
                 Log.w(TAG, "Response Result : "+conn.getResponseCode()+":"+conn.getResponseMessage());
-                /*if(LogUtil.isDebug) {
-                    ToastUtils.showToast("Response Result : "+conn.getResponseCode()+":"+conn.getResponseMessage());
-                }*/
             }
         } catch (Exception e) {
             e.printStackTrace();

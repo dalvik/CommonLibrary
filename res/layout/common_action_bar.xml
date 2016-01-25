@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingRight="3dp"
+    android:paddingLeft="3dp"
+    android:paddingTop="10dp">
+
+    <!--返回-->
+    <TextView
+        android:id="@+id/back"
+        style="@style/ActionBar.LargeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/actionbar_back_selector"
+        android:gravity="center_vertical" />
+
+    <!--标题-->
+    <TextView
+        android:id="@+id/title"
+        style="@style/ActionBar.LargeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <!-- 中间其他元素-->
+    <LinearLayout
+        android:id="@+id/middle"
+        style="@style/ActionBar.LargeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" />
+
+    <!-- 最右边-->
+    <Button
+        android:id="@+id/opt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:textColor="@color/font_normal" />
+
+    <!--右边第二个-->
+    <Button
+        android:id="@+id/optLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="2dip"
+        android:layout_toLeftOf="@id/opt"
+        android:background="@android:color/transparent"
+        android:textColor="@color/font_normal"
+        android:visibility="gone" />
+</RelativeLayout>

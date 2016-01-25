@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--actionbar-->
+    <color name="actionbar_bg">@android:color/white</color>
+
+    <!--bg-->
+    <color name="base_bg">#FFEDEDED</color>
+    <color name="bg_btn_normal">@android:color/white</color>
+    <color name="bg_btn_disable">#FFEDEDED</color>
+    <color name="bg_btn_focus">#FF373447</color>
+
+    <color name="bg_main">#FF373447</color>
+
+    <!-- 深灰色半透明文字颜色 -->
+    <color name="common_gray_tran_text_color">#88787878</color>
+
+    <!--font -->
+    <color name="font_focus">@android:color/white</color>
+    <color name="font_normal">#FF373447</color>
+    <color name="font_gray">#FF9B99A3</color>
+
+    <!-- Dialog-->
+    <color name="dialog_line_color">#ff80737b</color>
+    <color name="dialog_btn_bg">@android:color/white</color>
+    <color name="dialog_btn_text">#ff80737b</color>
+    <color name="dialog_tip_text">#ff80737b</color>
+    <color name="dialog_content_text">#ff80737b</color>
+    <!-- Confirm Dialog-->
+    <color name="confirm_tip_text">#ff80737b</color>
+    <color name="confirm_content_text">#ff80737b</color>
+
+    <!-- -->
+    <color name="wheel_text_focus_color">#FFFF007A</color>
+    <color name="wheel_text_normal_color">#FF80737B</color>
+
+
+    <!--title-->
+    <color name="font_title">#FF38354A</color>
+
+    <!-- type -->
+    <color name="type_food">#FFF2A021</color>
+    <color name="type_ktv">#FFF94E4B</color>
+    <color name="type_bar">#FFB13266</color>
+    <color name="type_coffee">#FFA9877D</color>
+    <color name="type_movie">#FFC5CD46</color>
+    <color name="type_other">#FF4AB8B5</color>
+
+    <!--透明色-->
+    <color name="transparent">#00000000</color>
+    <color name="find_dialog_color_click_normal">#fafafa</color>
+    <!-- 87黑色-->
+    <color name="findshows_color_87_black">#dd000000</color>
+    <color name="findshows_color_red">#FF6666</color>
+    <color name="centercount_top_bg">#363346</color>
+    <color name="centeracount_freeze_btnbg">#eaeaea</color>
+</resources>

@@ -36,7 +36,7 @@ public class HttpRequestTask<T extends HttpRequest> implements Runnable {
                     while ((len = inputStream.read(readBuffer)) != -1) {
                         buffer.write(readBuffer, 0, len);
                     }
-                    LogUtil.e("NetRequestTask", "response:" + buffer.toString());
+                    LogUtil.i("HttpRequestTask", "response:" + buffer.toString());
                     return buffer.toByteArray();
                 } catch (Exception e) {
                     e.printStackTrace();

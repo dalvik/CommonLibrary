@@ -13,7 +13,7 @@ public class WebServiceConfig {
     /*
      * 定义webservice提供服务的url
      */
-    public static final String SERVICE_URL = "http://172.7.3.249/admin/services/AdminWebService";//?wsdl "http://10.33.5.56/admin/services/patrolService";//
+    public static final String SERVICE_URL = "http://172.7.50.170/admin/services/AdminWebService?wsdl";//?wsdl "http://10.33.5.56/admin/services/patrolService";//
    
     public static final String SERVICE_DEFAULT_UPLAOD_TYPE = "ftp";
     
