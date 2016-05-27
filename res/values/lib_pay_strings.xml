@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+ 	
+ 	<!-- 支付-->
+    <string name="pay_title">确认订单</string>
+    <string name="pay_detail">支付明细</string>
+    <string name="pay_total">共计&#160;&#160;:&#160;&#160;</string>
+    <string name="pay_total_price">¥%1$s元</string>
+    <string name="pay_ways">选择支付方式</string>
+    <string name="pay_wechat">微信支付</string>
+    <string name="pay_alipay">支付宝支付</string>
+    <string name="pay_submit">确定付款</string>
+    <string name="pay_count">x%1$d</string>
+    <string name="pay_price">¥%1$s</string>
+    <string name="pay_confirm_title">警告</string>
+    <string name="pay_confirm_content">订单尚未支付,强制退出后,无法发布活动,是否退出?</string>
+    <string name="pay_confirm_cancel">放弃付款</string>
+    <string name="pay_confirm_ok">付款</string>
+    
+    <!-- 打赏 -->
+    <string name="pay_donate_hint">输入打赏金额</string>
+    <string name="pay_donate_help">您的支持是我们前进的动力!</string>
+    <string name="pay_donate_message_hint">继续努力,再接再厉</string>
+ 	<string name="pay_donate_submit">打赏</string>
+    <string name="pay_donate_title">打赏</string>
+</resources>

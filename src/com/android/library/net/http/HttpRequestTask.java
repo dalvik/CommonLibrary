@@ -1,7 +1,6 @@
 package com.android.library.net.http;
 
 
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 import com.android.library.net.base.OnReslutListener;
@@ -26,18 +25,18 @@ public class HttpRequestTask<T extends HttpRequest> implements Runnable {
     }
 
     private byte[] postMethod() {
-        return HttpUtil.loadData(req instanceof HTTPPostRequest ? true : false, req.getUrl(), req.getHeader(), req.getData(), new InputStreamParser<byte[]>() {
+        return HttpUtil.loadData(req instanceof HTTPPostRequest ?  false : true , req.getUrl(), req.getHeader(), req.getData(), new InputStreamParser<byte[]>() {
             @Override
             public byte[] parser(final InputStream inputStream) {
-                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
                 try {
-                    byte[] readBuffer = new byte[1024*3];
+                    byte[] readBuffer = new byte[512];
+                    StringBuffer sb = new StringBuffer();
                     int len = 0;
                     while ((len = inputStream.read(readBuffer)) != -1) {
-                        buffer.write(readBuffer, 0, len);
+                        sb.append(new String(readBuffer, 0, len));
                     }
-                    LogUtil.i("HttpRequestTask", "response:" + buffer.toString());
-                    return buffer.toByteArray();
+                    LogUtil.i("HttpRequestTask", "response:" + sb.toString());
+                    return sb.toString().getBytes();
                 } catch (Exception e) {
                     e.printStackTrace();
                     return null;
@@ -45,11 +44,7 @@ public class HttpRequestTask<T extends HttpRequest> implements Runnable {
                     try {
                         inputStream.close();
                     } catch (Exception e) {
-                    } finally {
-                        try {
-                            buffer.close();
-                        } catch (Exception e) {
-                        }
+                        e.printStackTrace();
                     }
                 }
             }

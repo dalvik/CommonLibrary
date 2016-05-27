@@ -20,7 +20,7 @@ public class ConfirmDialog extends BaseDialog {
 
     protected int cancel;
 
-    private OnResultListener listener;
+    protected OnResultListener listener;
 
     public static ConfirmDialog newInstance(int titleId, int contentId, int confirm, int cancelId, boolean cancelable, OnResultListener listener) {
         ConfirmDialog dialog = new ConfirmDialog();

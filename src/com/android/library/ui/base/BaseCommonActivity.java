@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.widget.ScrollView;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.android.library.BaseApplication;
 import com.android.library.R;
 import com.android.library.net.base.IDataCallback;
@@ -18,7 +18,7 @@ import com.android.library.ui.utils.DialogUtils;
 import com.android.library.ui.utils.PriorityRunnable;
 import com.android.library.ui.utils.ToastUtils;
 
-public abstract class BaseCommonActivity extends FragmentActivity implements IDataCallback {
+public abstract class BaseCommonActivity extends SherlockFragmentActivity implements IDataCallback {
     public static final String TAG = "CommonBaseActivity";
     public static final String INTENT_CLOSE = "activity.close";
 

@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <!-- common lib res -->
+    <!-- top bar bg -->
+    <color name="lib_common_actionbar_background">@android:color/white</color>
+    <color name="lib_common_content_background">#FF373447</color>
+    <color name="lib_common_actionbar_text_color">@android:color/black</color>
+    <color name="lib_common_content_text_color">@android:color/black</color>
+    
+    <drawable name="lib_common_actionbar_background">@android:color/white</drawable>
+    <drawable name="lib_common_content_background">#FFEDEDED</drawable>
+    <drawable name="lib_common_actionbar_text_color">@android:color/black</drawable>
+    <drawable name="lib_common_content_text_color">@android:color/black</drawable>
+    
     <!--actionbar-->
     <color name="actionbar_bg">@android:color/white</color>
 
+    <!-- base -->
+    <color name="white">#ffffffff</color>
+    <color name="white_gray">#F0F0F0</color>
+    <color name="black">#ff000000</color>
+    <color name="black_gray">#333333</color>
+    <color name="blue">#2DCD70</color>
+    
     <!--bg-->
     <color name="base_bg">#FFEDEDED</color>
     <color name="bg_btn_normal">@android:color/white</color>
@@ -33,6 +53,7 @@
     <color name="wheel_text_focus_color">#FFFF007A</color>
     <color name="wheel_text_normal_color">#FF80737B</color>
 
+    <color name="notes_color">#ff777777</color>
 
     <!--title-->
     <color name="font_title">#FF38354A</color>
@@ -53,4 +74,16 @@
     <color name="findshows_color_red">#FF6666</color>
     <color name="centercount_top_bg">#363346</color>
     <color name="centeracount_freeze_btnbg">#eaeaea</color>
+    
+    <!-- zxing -->
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="lib_color_zxing_capture_title">#ffffffff</color>
+    
+    <color name="weibo_listtab_off">#8d8d8d</color>
 </resources>

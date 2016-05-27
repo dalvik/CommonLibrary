@@ -7,6 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -67,8 +68,13 @@ public final class HttpUtil {
         HttpURLConnection conn = null;
         OutputStream out = null;
         T t = null;
+        String reqUrl = url;
+        if(!isPost){
+            reqUrl = url+"?" + new String(params);
+        }
+        LogUtil.i(TAG, "==> loadData " + reqUrl);
         try {
-            URL httpurl = new URL(url);
+            URL httpurl = new URL(reqUrl);
             conn = (HttpURLConnection) httpurl.openConnection();
             conn.setUseCaches(false);
             conn.setConnectTimeout(TIME_OUT);
@@ -111,7 +117,7 @@ public final class HttpUtil {
                     t = parser.parser(conn.getInputStream());
                 }
             }else{
-                Log.w(TAG, "Response Result : "+conn.getResponseCode()+":"+conn.getResponseMessage());
+                LogUtil.w(TAG, "Response Result : "+conn.getResponseCode()+":"+conn.getResponseMessage());
             }
         } catch (Exception e) {
             e.printStackTrace();

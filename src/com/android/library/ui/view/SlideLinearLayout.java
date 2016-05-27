@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 /**
  * 滑动切换activity的layout, 默认开启Slide
  *
+ * @author Tony
  */
 public class SlideLinearLayout extends LinearLayout {
     private static final String TAG = "SlideLinearLayout";

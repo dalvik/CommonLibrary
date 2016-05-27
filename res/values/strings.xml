@@ -29,6 +29,20 @@
 
     <string name="select_time_text">选择时间</string>
 
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="gorget_pwd">找回密码</string>
+    <string name="thirdRegister">绑定账号</string>
+    <string name="submit">提交</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="birthday">%1$d年%2$d月%3$d日</string>
+    <string name="confirm">确定</string>
+    <string name="update">更新</string>
+    <string name="update_tip">有新版本更新.</string>
+    <string name="download">下载</string>
+    <string name="install">安装</string>
+    
     <!-- 引导页 -->
     <string name="guide_enter">立&#160;即&#160;体&#160;验</string>
     

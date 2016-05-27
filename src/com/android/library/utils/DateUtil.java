@@ -100,5 +100,43 @@ public class DateUtil extends DateUtils {
         return (cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA)) && (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)) && (cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
     }
 
+    public static String getDateString(long date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
+        int dateYear = calendar.get(Calendar.YEAR);
+        int dateMonth = calendar.get(Calendar.MONTH)+1;
+        int dateWeek = calendar.get(Calendar.WEEK_OF_MONTH);
+        int dateDay = calendar.get(Calendar.DAY_OF_WEEK);
+        Calendar now = Calendar.getInstance();
+        int nowYear = now.get(Calendar.YEAR);
+        int nowMonth = now.get(Calendar.MONTH)+1;
+        int nowWeek = now.get(Calendar.WEEK_OF_MONTH);
+        int nowDay = now.get(Calendar.DAY_OF_WEEK);
+        int deltYear = nowYear - dateYear;
+        if(deltYear == 0){//同一年
+            int deltMonth = nowMonth - dateMonth;
+            if(deltMonth == 0){//同一月
+                int deltWeek = nowWeek - dateWeek;
+                if(deltWeek == 0){//同一周
+                    int deltDay = nowDay - dateDay;
+                    if(deltDay == 0){//同一天
+                        return "今天";
+                    } else if(deltDay == 1){
+                        return "昨天";
+                    } else if(deltDay == 2){
+                        return "前天";
+                    } else {
+                        return dateDay + "天前";
+                    }
+                } else{
+                    return deltWeek + "周前";  
+                }
+            } else {
+                return deltMonth + "月前";    
+            }
+        } else {
+            return deltYear + "年前";
+        }
+    }
 
 }

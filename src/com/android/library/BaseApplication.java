@@ -1,5 +1,9 @@
 package com.android.library;
 
+import org.xutils.x;
+
+import com.android.library.net.utils.LogUtil;
+
 import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
@@ -15,8 +19,11 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        x.Ext.init(this);
+        x.Ext.setDebug(BuildConfig.DEBUG);
         handler = new Handler();
         curContext = this;
+        LogUtil.i("BaseApplication", "==> BaseApplication onCreate.");
     }
 
     public static long getRealTime() {

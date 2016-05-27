@@ -137,4 +137,8 @@ public class BaseDialog extends DialogFragment implements IDataCallback {
 
     protected void handleResponseData(int what, int result, int arg2, Object obj) {
     }
+    
+    public void dismissAllowingStateLoss(){
+        this.dismiss();
+    }
 }

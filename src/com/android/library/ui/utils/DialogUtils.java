@@ -9,11 +9,14 @@ import com.android.library.ui.dialog.ConfirmDialog;
 import com.android.library.ui.dialog.DateTimePickerDialog;
 import com.android.library.ui.dialog.SelectorListDialog;
 import com.android.library.ui.dialog.TextDialog;
+import com.android.library.ui.dialog.UpdateDialog;
 import com.android.library.ui.dialog.WaitingDialog;
 
 
 public class DialogUtils {
 
+    private static final String DLG_SPEED = "dlg_speed";
+    
     /**
      * 日期选择框
      *
@@ -82,5 +85,26 @@ public class DialogUtils {
      */
     public static ConfirmDialog newConfirmDialog(int contentId, int titleId, int confirmId, int cancelId, ConfirmDialog.OnResultListener listener) {
         return ConfirmDialog.newInstance(titleId, contentId, confirmId, cancelId, false, listener);
+    }
+    
+    /**
+     * 发布极速约
+     * @param activity
+     * @return
+     */
+    /*public static SpeedDialog showSpeedDialog(BaseCommonActivity activity) {
+        SpeedDialog dialog = SpeedDialog.newInstance();
+        dialog.show(activity.getSupportFragmentManager(), DLG_SPEED);
+        return dialog;
+    }*/
+
+    /**
+     * 更新提示框
+     *
+     * @param content
+     * @return
+     */
+    public static UpdateDialog newUpdateDialog(String content, int confirm, int cancelId, ConfirmDialog.OnResultListener listener) {
+        return UpdateDialog.newInstance(R.string.update, content, confirm, cancelId, false, listener);
     }
 }

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.android.library.R;
-import com.android.library.ui.view.SlideLinearLayout;
+import com.android.library.ui.sidebar.SlideLinearLayout;
 
 
 public abstract class BaseActionBarActivity extends BaseCommonActivity {
