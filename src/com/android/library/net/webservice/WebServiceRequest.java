@@ -17,14 +17,4 @@ import com.android.library.net.req.WebServiceReqest;
  */
 public abstract class WebServiceRequest<T extends DataReq> implements WebServiceReqest {
 
-    @Override
-    public String getUrl() {
-        return WebServiceConfig.SERVICE_URL;
-    }
-    
-    @Override
-    public String getNamespace() {
-        return WebServiceConfig.SERVICE_NAMESPACE;
-    }
-
 }

@@ -25,9 +25,13 @@ public class JSONWebService<T extends DataStruct, K extends DataReq> extends Abs
     private JSONType<T> mDataType;
     private K mReqBean;
     private String mMethod;
+    private String mUrl;
+    private String mNamespace;
     
-    public void setReqAndResp(String method, K req, JSONType<T> resp) {
+    public void setReqAndResp(String method, String url, String namespace, K req, JSONType<T> resp) {
         mMethod = method;
+        this.mUrl = url;
+        this.mNamespace = namespace;
         mReqBean = req;
         mDataType = resp;
     }
@@ -40,6 +44,17 @@ public class JSONWebService<T extends DataStruct, K extends DataReq> extends Abs
             public String getMethod() {
                 return mMethod;
             }
+            
+            @Override
+            public String getUrl() {
+                return mUrl;
+            }
+            
+            @Override
+            public String getNamespace() {
+                return mNamespace;
+            }
+            
         };
         return req;
     }

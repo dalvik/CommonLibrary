@@ -45,12 +45,12 @@ public abstract class JSONWebServiceDataManager<T extends AbstractData, K extend
      * @param req
      * @return
      */
-    protected int doRequest(String api, K req) {
+    protected int doRequest(String api,String url, String namespace, K req) {
         if(respType == null){
             throw new RuntimeException("method initRespType() must be overide");
         }
         JSONWebService<T, K> source = new JSONWebService<T, K>();
-        source.setReqAndResp(api, req, respType);
+        source.setReqAndResp(api, url, namespace, req, respType);
         source.setListener(listener);
         source.doRequest();
         return source.getWhat();
@@ -62,9 +62,9 @@ public abstract class JSONWebServiceDataManager<T extends AbstractData, K extend
      * @param req
      * @return
      */
-    protected int doRequest(String api, K req, JSONType type) {
+    protected int doRequest(String api,String url, String namespace, K req, JSONType type) {
         JSONWebService<T, K> source = new JSONWebService<T, K>();
-        source.setReqAndResp(api, req, type);
+        source.setReqAndResp(api, url, namespace, req, type);
         source.setListener(listener);
         source.doRequest();
         return source.getWhat();

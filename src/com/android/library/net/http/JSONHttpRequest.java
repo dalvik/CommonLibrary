@@ -28,11 +28,6 @@ public abstract class JSONHttpRequest<T extends DataReq> extends HttpPostJSONReq
         super(t);
     }
 
-    @Override
-    public String getUrl() {
-        return HttpConfig.SERVER;
-    }
-    
     private long getRealTime() {
         return BaseApplication.getRealTime();
     }
@@ -76,7 +71,7 @@ public abstract class JSONHttpRequest<T extends DataReq> extends HttpPostJSONReq
         return SecurityUtils.sign(value, SecurityUtils.KEY);
     }
     private String getV() {
-        return HttpConfig.API_VER;
+        return "1";
     }
     
     private String getSID() {

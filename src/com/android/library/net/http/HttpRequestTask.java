@@ -31,7 +31,7 @@ public class HttpRequestTask<T extends HttpRequest> implements Runnable {
             public byte[] parser(final InputStream inputStream) {
                 ByteArrayOutputStream buffer = new ByteArrayOutputStream();
                 try {
-                    byte[] readBuffer = new byte[1024];
+                    byte[] readBuffer = new byte[1024*3];
                     int len = 0;
                     while ((len = inputStream.read(readBuffer)) != -1) {
                         buffer.write(readBuffer, 0, len);

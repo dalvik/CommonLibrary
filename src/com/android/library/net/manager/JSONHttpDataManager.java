@@ -10,7 +10,8 @@ package com.android.library.net.manager;
 
 import com.android.library.net.base.AbstractData;
 import com.android.library.net.base.IDataCallback;
-import com.android.library.net.http.JSONHttp;
+import com.android.library.net.http.JSONHttpGet;
+import com.android.library.net.http.JSONHttpPost;
 import com.android.library.net.req.DataReq;
 import com.android.library.net.utils.JSONType;
 
@@ -45,12 +46,12 @@ public abstract class JSONHttpDataManager<T extends AbstractData, K extends Data
      * @param req
      * @return
      */
-    protected int doRequest(String api, K req) {
+    protected int doPostRequest(String url, String api, K req) {
         if(respType == null){
             throw new RuntimeException("method initRespType() must be overide");
         }
-        JSONHttp<T, K> source = new JSONHttp<T, K>();
-        source.setReqAndResp(api, req, respType);
+        JSONHttpPost<T, K> source = new JSONHttpPost<T, K>();
+        source.setReqAndResp(url, api, req, respType);
         source.setListener(listener);
         source.doRequest();
         return source.getWhat();
@@ -62,9 +63,40 @@ public abstract class JSONHttpDataManager<T extends AbstractData, K extends Data
      * @param req
      * @return
      */
-    protected int doRequest(String api, K req, JSONType type) {
-        JSONHttp<T, K> source = new JSONHttp<T, K>();
-        source.setReqAndResp(api, req, type);
+    protected int doPostRequest(String url, String api, K req, JSONType type) {
+        JSONHttpPost<T, K> source = new JSONHttpPost<T, K>();
+        source.setReqAndResp(url, api, req, type);
+        source.setListener(listener);
+        source.doRequest();
+        return source.getWhat();
+    }
+    
+    /**
+     * 发送请求
+     *
+     * @param req
+     * @return
+     */
+    protected int doGetRequest(String url, String api, K req) {
+        if(respType == null){
+            throw new RuntimeException("method initRespType() must be overide");
+        }
+        JSONHttpGet<T, K> source = new JSONHttpGet<T, K>();
+        source.setReqAndResp(url, api, req, respType);
+        source.setListener(listener);
+        source.doRequest();
+        return source.getWhat();
+    }
+    
+    /**
+     * 发送请求
+     *
+     * @param req
+     * @return
+     */
+    protected int doGetRequest(String url, String api, K req, JSONType type) {
+        JSONHttpGet<T, K> source = new JSONHttpGet<T, K>();
+        source.setReqAndResp(url, api, req, type);
         source.setListener(listener);
         source.doRequest();
         return source.getWhat();
