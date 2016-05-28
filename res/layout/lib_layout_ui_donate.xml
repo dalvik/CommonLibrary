@@ -11,76 +11,85 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <!-- 打赏金额 -->
-        <EditText
-            android:id="@+id/lib_id_pay_donate_value"
-            android:layout_width="wrap_content"
+        <!-- 最大支付提示 -->
+        <TextView
+            android:id="@+id/lib_id_pay_donate_max_tips"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="@string/pay_donate_hint"
-            android:inputType="number" />
-
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="14dip"
+            android:layout_marginRight="14dip"
+            android:textColor="@color/pay_donate_max_text"
+            android:background="@color/pay_donate_max_bg"
+            android:padding="5dip"
+            android:text="@string/pay_donate_max_value"
+            android:visibility="invisible"
+            android:textSize="10sp" />
+        
+        
+        <!-- 打赏金额 -->
+        <include android:id="@+id/pay_donate_layout" layout="@layout/lib_layout_label_edittext" />
+        
         <com.android.library.ui.view.HandyTextView
             android:id="@+id/reg_phone_htv_note"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
             android:layout_marginTop="8dip"
-            android:clickable="true"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
             android:focusable="true"
             android:minLines="2"
             android:text="@string/pay_donate_help"
             android:textColor="@color/notes_color"
-            android:textSize="16sp" />
+            android:textSize="10sp" />
         
         <!-- 留言 -->
-        <EditText
-            android:id="@+id/lib_id_pay_donate_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="@string/pay_donate_message_hint" />
+        <include android:id="@+id/pay_message_layout" 
+            layout="@layout/lib_layout_label_edittext" />
         
         <!-- 金额显示 -->
         <TextView
-            android:id="@+id/lib_id_pay_donate_number"
-            android:layout_width="80.0dip"
-            android:layout_height="80.0dip"
+            android:id="@+id/lib_id_pay_donate_show_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="#ffffffff"
+            android:textColor="@android:color/black"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:textSize="30.0dip" />
+            android:paddingBottom="20dp"
+            android:textStyle="bold"
+            android:textSize="25sp" />
 
         <!-- 提交 -->
         <Button
             android:id="@+id/lib_id_pay_donate_submit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lib_id_pay_donate_number"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_selector"
-            android:text="@string/pay_donate_submit" />
-
+            android:paddingBottom="5dp"
+    		android:paddingLeft="20dp"
+    		android:paddingRight="20dp"
+    		android:paddingTop="5dp"
+    		android:layout_marginLeft="14dip"
+    		android:layout_marginRight="14dip"
+            android:background="@drawable/commit_button_text_light"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/pay_donate_submit"
+            android:textSize="22sp"/>
+        
+        
         <!-- 打赏列表 -->
         <ListView
             android:id="@+id/lib_id_pay_donate_list"
-            android:layout_below="@+id/lib_id_pay_donate_submit"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
+            android:visibility="gone"
             android:divider="@null" />
     </LinearLayout>
 

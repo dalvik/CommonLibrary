@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dip"
+    android:layout_marginRight="14dip"
+    android:background="@drawable/lib_drawable_edittext_label"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/lib_id_edittext_header"
+        android:focusable="false"
+        android:clickable="false"
+        android:background="@drawable/lib_drawable_edittext_none"
+        style="@style/PayTextField" />
+
+    <EditText
+        android:id="@+id/lib_id_edittext_body"
+        style="@style/PayTextField"
+        android:layout_weight="1.0"
+        android:background="@drawable/lib_drawable_edittext_none" />
+
+    <TextView
+        android:id="@+id/lib_id_edittext_footer"
+        android:focusable="false"
+        android:clickable="false"
+        style="@style/PayTextField"
+        android:background="@drawable/lib_drawable_edittext_none" />
+
+</LinearLayout>

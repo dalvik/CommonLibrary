@@ -86,4 +86,9 @@
     <color name="lib_color_zxing_capture_title">#ffffffff</color>
     
     <color name="weibo_listtab_off">#8d8d8d</color>
+    <!-- commit button -->
+    <drawable name="commit_normal_red">#FF0000</drawable>
+    <drawable name="commit_disable_red">#FF8888</drawable>
+    <color name="pay_donate_max_bg">#8B0000</color>
+    <color name="pay_donate_max_text">#CD950C</color>
 </resources>

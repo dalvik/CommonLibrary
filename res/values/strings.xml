@@ -46,4 +46,6 @@
     <!-- 引导页 -->
     <string name="guide_enter">立&#160;即&#160;体&#160;验</string>
     
+    <!-- edittext with label -->
+    <string name="lib_string_edittext_title">金额</string>
 </resources>

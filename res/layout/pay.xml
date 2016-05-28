@@ -47,7 +47,7 @@
             android:id="@+id/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pay_detail"
+            android:text="@string/pay_donate_detail"
             android:textColor="@color/font_normal"
             android:textSize="18sp" />
 
@@ -66,7 +66,7 @@
         <ImageView
             android:id="@id/line"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="1dip"
             android:layout_below="@id/listView"
             android:background="@drawable/lib_drawable_ui_line" />
 
@@ -88,7 +88,7 @@
             android:gravity="bottom"
             android:layout_toLeftOf="@id/priceTv"
             android:layout_alignBaseline="@id/priceTv"
-            android:text="@string/pay_total"
+            android:text="@string/pay_donate_total"
             android:textColor="@color/font_normal"
             android:textSize="14sp" />
     </RelativeLayout>
@@ -122,7 +122,41 @@
 
             <RadioButton
                 android:id="@+id/weChatRb"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_selector"
+                android:button="@null"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:visibility="invisible"
+                android:text="@string/pay_wechat"
+                android:textColor="@color/btn_selector"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/aliPayRb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:clickable="false"
+                android:gravity="center"
+                android:background="@drawable/btn_selector"
+                android:button="@null"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/pay_alipay"
+                android:textColor="@color/btn_selector"
+                android:textSize="16sp" />
+            
+            <RadioButton
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -133,23 +167,7 @@
                 android:gravity="center"
                 android:paddingTop="5dp"
                 android:text="@string/pay_wechat"
-                android:textColor="@color/btn_selector"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/aliPayRb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:checked="true"
-                android:gravity="center"
-                android:background="@drawable/btn_selector"
-                android:button="@null"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:text="@string/pay_alipay"
+                android:visibility="invisible"
                 android:textColor="@color/btn_selector"
                 android:textSize="16sp" />
         </RadioGroup>

@@ -4,28 +4,41 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-
 import com.android.library.R;
 import com.android.library.ui.base.BaseSubActivity;
 import com.android.library.ui.utils.ActivityUtils;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
 public class DonateActivity extends BaseSubActivity implements View.OnClickListener{
     
     public static final int DONATE_REQUEST_CODE = 1000;
+    public static final int DONATE_MAX_VALUE = 20000;
     
+    public static final String EXTRA_DONATE_PAY = "donate_pay";
+    public static final String EXTRA_DONATE_MESSAGE = "donate_message";
+    
+    private TextView mMaxPayPips;
+    private TextView mDonateHeader;
+    private EditText mDonateBody;
+    private TextView mDonateFooter;
+    private TextView mDonateMessageHeader;
+    private EditText mDonateMessageBody;
+    private TextView mDonateMessageFooter;
+    private TextView mDonateShowValue;
+    private Button mCommitButton;
     private ListView mDonateListView;
-    private EditText mDonateValue;
-    private EditText mDonateMessage;
-    private TextView mDonateNumber;
-    private String mCurrentAmount = "";
+    
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +53,77 @@ public class DonateActivity extends BaseSubActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId() == R.id.lib_id_pay_donate_submit){
             Intent intent = new Intent(activity, PayActivity.class);
+            Bundle bundle = new Bundle();
+            double parsed = Double.parseDouble(mDonateBody.getText().toString());
+            bundle.putDouble(EXTRA_DONATE_PAY, parsed);
+            String message = mDonateMessageBody.getText().toString();
+            if(message == null || message.length() == 0){
+            	bundle.putString(EXTRA_DONATE_MESSAGE, getString(R.string.pay_donate_message_hint));
+            } else {
+            	bundle.putString(EXTRA_DONATE_MESSAGE, message);
+            }
+            intent.putExtras(bundle);
             ActivityUtils.startActivityForResult(activity, intent, DONATE_REQUEST_CODE);
             DonateActivity.this.finish();
         }
     }
 
     private void initUI(){
-        mDonateValue = (EditText) findViewById(R.id.lib_id_pay_donate_value);
-        mDonateValue.addTextChangedListener(new TextWatcher() {
+    	mMaxPayPips = (TextView) findViewById(R.id.lib_id_pay_donate_max_tips);
+    	View payDonateView = findViewById(R.id.pay_donate_layout);
+    	View payMessageView = findViewById(R.id.pay_message_layout);
+    	mDonateHeader = (TextView) payDonateView.findViewById(R.id.lib_id_edittext_header);
+    	mDonateBody = (EditText) payDonateView.findViewById(R.id.lib_id_edittext_body);
+    	mDonateFooter = (TextView) payDonateView.findViewById(R.id.lib_id_edittext_footer);
+    	
+    	mDonateMessageHeader = (TextView) payMessageView.findViewById(R.id.lib_id_edittext_header);
+    	mDonateMessageBody = (EditText) payMessageView.findViewById(R.id.lib_id_edittext_body);
+    	mDonateMessageFooter = (TextView) payMessageView.findViewById(R.id.lib_id_edittext_footer);
+    	
+    	mDonateShowValue = (TextView) findViewById(R.id.lib_id_pay_donate_show_value);
+    	mCommitButton = (Button) findViewById(R.id.lib_id_pay_donate_submit);
+    	mCommitButton.setOnClickListener(this);
+        mDonateListView = (ListView) findViewById(R.id.lib_id_pay_donate_list);
+        
+        mDonateHeader.setText(R.string.pay_donate_header);
+        mDonateBody.setHint(R.string.pay_donate_hint);
+        mDonateBody.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        mDonateFooter.setText(R.string.pay_donate_footer);
+        
+        mDonateMessageHeader.setText(R.string.pay_donate_message_header);
+        mDonateMessageBody.setHint(R.string.pay_donate_message_hint);
+        mDonateMessageBody.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+        mDonateMessageFooter.setText("");
+        
+        mCommitButton.setEnabled(false);
+        
+    	mDonateBody.addTextChangedListener(new TextWatcher() {
             
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            	if (s.toString().contains(".")) {
+					if (s.length() - 1 - s.toString().indexOf(".") > 2) {
+						s = s.toString().subSequence(0, s.toString().indexOf(".") + 3);
+						mDonateBody.setText(s);
+						mDonateBody.setSelection(s.length());
+					}
+				}
+				if (s.toString().trim().substring(0).equals(".")) {
+					s = "0" + s;
+					mDonateBody.setText(s);
+					mDonateBody.setSelection(2);
+				}
+
+				if (s.toString().startsWith("0")
+						&& s.toString().trim().length() > 1) {
+					if (!s.toString().substring(1, 2).equals(".")) {
+						mDonateBody.setText(s.subSequence(0, 1));
+						mDonateBody.setSelection(1);
+						mDonateShowValue.setText("");
+						mMaxPayPips.setVisibility(View.INVISIBLE);
+						return;
+					}
+				}
             }
             
             @Override
@@ -60,29 +133,33 @@ public class DonateActivity extends BaseSubActivity implements View.OnClickListe
             
             @Override
             public void afterTextChanged(Editable s) {
-                if (!s.toString().equals(mCurrentAmount)) {
-                    mDonateValue.removeTextChangedListener(this);
-                    String replaceable = String.format("[%s, \\s.]", NumberFormat.getCurrencyInstance(Locale.CHINA).getCurrency().getSymbol(Locale.CHINA));
-                    String cleanString = s.toString().replaceAll(replaceable, "");
-
-                    if (cleanString.equals("") || new BigDecimal(cleanString).toString().equals("0")) {
-                        mDonateValue.setText(null);
-                        mDonateNumber.setText("");
-                    } else {
-                        double parsed = Double.parseDouble(cleanString);
-                        String formatted = NumberFormat.getCurrencyInstance(Locale.CHINA).format((parsed / 100));
-                        mCurrentAmount = formatted;
-                        mDonateValue.setText(formatted);
-                        mDonateValue.setSelection(formatted.length());
-                        mDonateNumber.setText(formatted);
-                    }
-                    mDonateValue.addTextChangedListener(this);
+            	String replaceable = String.format("[%s, \\s.]", NumberFormat.getCurrencyInstance(Locale.CHINA).getCurrency().getSymbol(Locale.CHINA));
+                String cleanString = mDonateBody.getText().toString().replaceAll(replaceable, "");
+                if (cleanString.equals("") || new BigDecimal(cleanString).toString().equals("0")) {
+                	mMaxPayPips.setVisibility(View.INVISIBLE);
+                	mCommitButton.setEnabled(false);
+                	mDonateShowValue.setText("");
+                } else {
+                	double parsed = Double.parseDouble(mDonateBody.getText().toString());
+                	String yuan = NumberFormat.getCurrencyInstance(Locale.CHINA).getCurrency().getSymbol(Locale.CHINA);
+                	mDonateShowValue.setText(yuan + String.format("%.2f", parsed));
+                	if(parsed>DONATE_MAX_VALUE){
+                		mMaxPayPips.setVisibility(View.VISIBLE);
+                		mMaxPayPips.setText(getString(R.string.pay_donate_max_value, DONATE_MAX_VALUE));
+                		mCommitButton.setEnabled(false);
+                		mDonateHeader.setTextColor(Color.RED);
+                        mDonateBody.setTextColor(Color.RED);
+                        mDonateFooter.setTextColor(Color.RED);
+                	} else {
+                		mMaxPayPips.setVisibility(View.INVISIBLE);
+                		mCommitButton.setEnabled(true);
+                		mDonateHeader.setTextColor(Color.BLACK);
+                        mDonateBody.setTextColor(Color.BLACK);
+                        mDonateFooter.setTextColor(Color.BLACK);
+                	}
                 }
             }
         });
-        mDonateMessage = (EditText) findViewById(R.id.lib_id_pay_donate_message);
-        mDonateNumber = (TextView) findViewById(R.id.lib_id_pay_donate_number);
-        findViewById(R.id.lib_id_pay_donate_submit).setOnClickListener(this);
-        mDonateListView = (ListView) findViewById(R.id.lib_id_pay_donate_list);
+       
     }
 }

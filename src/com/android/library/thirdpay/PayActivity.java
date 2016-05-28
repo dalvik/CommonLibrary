@@ -1,5 +1,6 @@
 package com.android.library.thirdpay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,9 @@ public class PayActivity extends BaseSubActivity implements RadioGroup.OnChecked
 
     private View IconLl;
 
+    private double mDonateValue;
+    private String mMessage;
+    
     //private PayBean payBean;
     // 1 支付宝   0 微信
     private int payWay = 1;
@@ -33,7 +37,7 @@ public class PayActivity extends BaseSubActivity implements RadioGroup.OnChecked
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay);
-        setTitle(R.string.pay_title);
+        setTitle(R.string.pay_donate_pay_title);
         initUI();
     }
 
@@ -53,12 +57,17 @@ public class PayActivity extends BaseSubActivity implements RadioGroup.OnChecked
         if (payBean == null || payBean.isEmptyItem()) {
             return false;
         }*/
+    	Bundle bundle = getIntent().getExtras();
+    	if(bundle != null){
+    		mMessage = bundle.getString(DonateActivity.EXTRA_DONATE_MESSAGE);
+    		mDonateValue = bundle.getDouble(DonateActivity.EXTRA_DONATE_PAY);
+    	}
         return true;
     }
 
     private void initUI() {
         // 详情列表
-        float totalPrice = 0;
+        //float totalPrice = 0;
         /*adapter = new PayAdapter(activity);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
@@ -69,7 +78,7 @@ public class PayActivity extends BaseSubActivity implements RadioGroup.OnChecked
         }*/
         // 总价格
         priceTv = (TextView) findViewById(R.id.priceTv);
-        priceTv.setText(getString(R.string.pay_total_price, String.format("%.2f", totalPrice)));
+        priceTv.setText(getString(R.string.pay_total_price, String.format("%.2f", mDonateValue)));
         //支付方式
         payWayRg = (RadioGroup) findViewById(R.id.payWayRg);
         payWayRg.setOnCheckedChangeListener(this);
@@ -93,7 +102,7 @@ public class PayActivity extends BaseSubActivity implements RadioGroup.OnChecked
     }
 
     private void showConfirmDlg(){
-        showConfirmDialog(R.string.pay_confirm_content, R.string.pay_confirm_title,R.string.pay_confirm_ok, R.string.pay_confirm_cancel, new ConfirmDialog.OnResultListener() {
+        showConfirmDialog(R.string.pay_donate_confirm_content, R.string.pay_donate_confirm_title,R.string.pay_donate_confirm_ok, R.string.pay_donate_confirm_cancel, new ConfirmDialog.OnResultListener() {
             @Override
             public void onConfirm() {
             }
