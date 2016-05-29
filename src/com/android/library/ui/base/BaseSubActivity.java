@@ -58,6 +58,26 @@ public abstract class BaseSubActivity extends BaseActionBarActivity {
     protected void setActionBarBackground(View view) {
     }
 
+    protected void setActionBarBackground(int resourceId) {
+        actionView.setBackgroundResource(resourceId);
+    }
+    
+    protected void setActionBarBackgroundColor(int colorId){
+        actionView.setBackgroundColor(colorId);
+    }
+    
+    protected void setBackground(int resourceId) {
+        contentView.setBackgroundResource(resourceId);
+    }
+    
+    protected void setBackgroundColor(int colorId){
+        contentView.setBackgroundColor(colorId);
+    }
+    
+    public void setTitleColor(int colorId){
+        this.title.setTextColor(colorId);
+    }
+    
     protected void setOptionLeftView(Button optionLeft) {
         optionLeft.setOnClickListener(new OnClickListener() {
             @Override

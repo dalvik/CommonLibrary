@@ -38,6 +38,7 @@ public class PayActivity extends BaseSubActivity implements RadioGroup.OnChecked
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay);
         setTitle(R.string.pay_donate_pay_title);
+        setActionBarBackground(R.drawable.lib_drawable_common_actionbar_background);
         initUI();
     }
 

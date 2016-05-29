@@ -1,6 +1,7 @@
 package com.android.library.ui.base;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,12 +17,18 @@ import com.android.library.ui.sidebar.SlideLinearLayout;
 public abstract class BaseActionBarActivity extends BaseCommonActivity {
     protected boolean isNeedAddWaitingView = false;
     /**
-     * 标题栏
+     * head view
      */
     protected View actionView;
     private SlideLinearLayout rootSliedLayout;
     private View waitView = null;
-    private View contentView = null;
+    /**
+     * body view
+     */
+    protected View contentView = null;
+    /**
+     * reload view
+     */
     private View reloadView = null;
 
     @Override
@@ -51,7 +58,7 @@ public abstract class BaseActionBarActivity extends BaseCommonActivity {
     private SlideLinearLayout createRootView(View view) {
         contentView = view;
         rootSliedLayout = new SlideLinearLayout(this);
-        rootSliedLayout.setBackgroundResource(R.color.base_bg);
+        rootSliedLayout.setBackgroundResource(R.color.lib_common_content_background);
         rootSliedLayout.setOrientation(LinearLayout.VERTICAL);
         actionView = LayoutInflater.from(this).inflate(R.layout.action_bar, null);
         rootSliedLayout.addView(actionView, LinearLayout.LayoutParams.MATCH_PARENT,
@@ -107,7 +114,6 @@ public abstract class BaseActionBarActivity extends BaseCommonActivity {
     /**
      * 重新加载数据
      *
-     * @author Sean.xie
      */
     public abstract void reload();
 

@@ -46,6 +46,7 @@ public class DonateActivity extends BaseSubActivity implements View.OnClickListe
         setContentView(R.layout.lib_layout_ui_donate);
         setTitle(R.string.pay_donate_title);
         initUI();
+        setActionBarBackground(R.drawable.lib_drawable_common_actionbar_background);
     }
 
     

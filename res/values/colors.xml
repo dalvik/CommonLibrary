@@ -4,7 +4,7 @@
     <!-- common lib res -->
     <!-- top bar bg -->
     <color name="lib_common_actionbar_background">@android:color/white</color>
-    <color name="lib_common_content_background">#FF373447</color>
+    <color name="lib_common_content_background">#FFEDEDED</color>
     <color name="lib_common_actionbar_text_color">@android:color/black</color>
     <color name="lib_common_content_text_color">@android:color/black</color>
     
