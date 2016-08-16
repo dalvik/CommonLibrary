@@ -8,6 +8,13 @@
  */
 package com.android.library.net.http;
 
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.android.library.net.base.DataStruct;
 import com.android.library.net.req.DataReq;
 import com.android.library.net.utils.JSONType;
@@ -45,6 +52,17 @@ public class JSONHttpGet<T extends DataStruct, K extends DataReq> extends Abstra
             @Override
             public String getUrl() {
                 return mUrl;
+            }
+            
+            @Override
+            public byte[] getData() {
+                Map<String, Object> map = JSONUtil.json2Map(JSONUtil.obj2Json(mReqBean));
+                Set<Entry<String, Object>> set = map.entrySet();
+                StringBuffer sb = new StringBuffer();
+                for(Entry<String, Object> s:set){
+                    sb.append(s.getKey()+"="+s.getValue()+"&");
+                }
+                return sb.subSequence(0, sb.toString().lastIndexOf("&")).toString().getBytes();
             }
         };
         return req;

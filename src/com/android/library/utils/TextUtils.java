@@ -2,6 +2,7 @@ package com.android.library.utils;
 
 
 import java.util.Collection;
+import java.util.regex.Pattern;
 
 public class TextUtils {
     private TextUtils() { /* cannot be instantiated */
@@ -102,5 +103,27 @@ public class TextUtils {
             return false;
         }
         return mobile.matches("^\\d{11}$");
+    }
+    
+    public static boolean mactchMoile(String mobile){
+        if (isEmpty(mobile)) {
+            return false;
+        }
+        return Pattern.compile("0?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}").matcher(mobile).matches();
+    }
+    
+    public static boolean mactchEmail(String email){
+        if (isEmpty(email)) {
+            return false;
+        }
+        //return Pattern.compile("\\w[\\w.-]*@[\\w.]+\\.\\w+").matcher(email).matches();
+        return Pattern.compile("([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}").matcher(email).matches();
+    }
+    
+    public static boolean mactchNumberic(String email){
+        if (isEmpty(email)) {
+            return false;
+        }
+        return Pattern.compile("\\d+").matcher(email).matches();
     }
 }

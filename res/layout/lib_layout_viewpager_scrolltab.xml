@@ -62,7 +62,7 @@
             android:layout_centerVertical="true"
             android:paddingBottom="1dip"
             android:src="@drawable/iv_navagation_scroll_right"
-            android:visibility="visible" >
+            android:visibility="gone" >
         </ImageView>
     </RelativeLayout>
 

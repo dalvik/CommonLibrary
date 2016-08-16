@@ -16,7 +16,6 @@
 
 package com.baoyz.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -357,8 +356,7 @@ class MaterialDrawable extends RefreshDrawable implements Animatable {
         mRing.setAlpha(alpha);
     }
 
-    @SuppressLint("Override")
-	public int getAlpha() {
+    public int getAlpha() {
         return mRing.getAlpha();
     }
 

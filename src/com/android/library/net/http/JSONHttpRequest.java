@@ -10,10 +10,13 @@ package com.android.library.net.http;
 
 import java.util.HashMap;
 
+import android.os.Build;
+
 import com.android.library.BaseApplication;
 import com.android.library.net.req.DataReq;
 import com.android.library.net.utils.LogUtil;
 import com.android.library.utils.SecurityUtils;
+import com.android.library.utils.TextUtils;
 
 /** 
  * @description: TODO
@@ -36,7 +39,7 @@ public abstract class JSONHttpRequest<T extends DataReq> extends HttpPostJSONReq
     public HashMap<String, String> getHeader() {
         HashMap<String, String> headers = new HashMap<String, String>();
         long time = getRealTime();
-        //簽名
+        //签名
         headers.put("m-sign", getSign(time));
         //SID
         headers.put("m-sid", getSID());
@@ -59,10 +62,10 @@ public abstract class JSONHttpRequest<T extends DataReq> extends HttpPostJSONReq
         builder.append("&" + BaseApplication.VERSION_CODE);
         /*if (!TextUtils.isEmpty(ClientInfo.getInstance().imei)) {
             builder.append("&" + ClientInfo.getInstance().imei);
-        }
+        }*/
         if (!TextUtils.isEmpty(getSID())) {
             builder.append("&" + getSID());
-        }*/
+        }
         builder.append("&" + time);
         builder.append("&" + getV());
         builder.append("&" + getJsonData());
